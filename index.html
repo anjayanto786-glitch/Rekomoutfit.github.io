@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Fashion Advisor - Sistem Pakar Outfit</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header data-aos="fade-down">
+            <h1>✨ Sistem Pakar Pemilihan Outfit ✨</h1>
+            <p>Temukan pakaian yang paling sesuai dengan bentuk tubuh Anda</p>
+        </header>
+        
+        <!-- Dashboard/Halaman Utama -->
+        <div id="dashboard" class="page active">
+            <div class="hero-section" data-aos="fade-up">
+                <h2>Selamat Datang di Fashion Advisor</h2>
+                <p class="subtitle">Sistem ini akan menganalisis bentuk tubuh Anda dan memberikan rekomendasi outfit yang paling cocok berdasarkan prinsip fashion yang tepat.</p>
+                
+                <div class="features">
+                    <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Identifikasi Akurat</h3>
+                        <p>Analisis bentuk tubuh dengan pertanyaan mendetail</p>
+                    </div>
+                    <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="feature-icon">👗</div>
+                        <h3>Rekomendasi Personal</h3>
+                        <p>Tips outfit sesuai bentuk tubuh Anda</p>
+                    </div>
+                    <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="feature-icon">💡</div>
+                        <h3>Tips Praktis</h3>
+                        <p>Apa yang harus dipakai dan dihindari</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-shapes-overview" data-aos="fade-up">
+    <h3>5 Bentuk Tubuh yang Kami Kenali</h3>
+    <div class="shapes-grid">
+        <div class="shape-card" data-aos="flip-left" data-aos-delay="100">
+            <div class="shape-image">
+                <img src="images/body_shapes/hourglass.jpg" alt="Bentuk Tubuh Jam Pasir" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div class="shape-visual hourglass" style="display: none;"></div>
+            </div>
+            <h4>Jam Pasir</h4>
+            <p>Bahu & pinggul seimbang, pinggang ramping</p>
+        </div>
+        <div class="shape-card" data-aos="flip-left" data-aos-delay="200">
+            <div class="shape-image">
+                <img src="images/body_shapes/rectangle.jpg" alt="Bentuk Tubuh Persegi" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div class="shape-visual rectangle" style="display: none;"></div>
+            </div>
+            <h4>Persegi</h4>
+            <p>Bahu, pinggang & pinggul hampir sama</p>
+        </div>
+        <div class="shape-card" data-aos="flip-left" data-aos-delay="300">
+            <div class="shape-image">
+                <img src="images/body_shapes/inverted_triangle.jpg" alt="Bentuk Tubuh Segitiga Terbalik" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div class="shape-visual inverted-triangle" style="display: none;"></div>
+            </div>
+            <h4>Segitiga Terbalik</h4>
+            <p>Bahu lebih lebar dari pinggul</p>
+        </div>
+        <div class="shape-card" data-aos="flip-left" data-aos-delay="400">
+            <div class="shape-image">
+                <img src="images/body_shapes/triangle.jpg" alt="Bentuk Tubuh Pir/Segitiga" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div class="shape-visual triangle" style="display: none;"></div>
+            </div>
+            <h4>Pir/Segitiga</h4>
+            <p>Pinggul lebih lebar dari bahu</p>
+        </div>
+        <div class="shape-card" data-aos="flip-left" data-aos-delay="500">
+            <div class="shape-image">
+                <img src="images/body_shapes/apple.jpg" alt="Bentuk Tubuh Apel" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div class="shape-visual apple" style="display: none;"></div>
+            </div>
+            <h4>Apel</h4>
+            <p>Perut lebih menonjol</p>
+        </div>
+    </div>
+</div>
+            
+            <div class="cta-section" data-aos="zoom-in">
+                <p>Yuk, temukan bentuk tubuh dan outfit terbaik untuk Anda!</p>
+                <button id="startQuiz" class="btn primary large">
+                    Mulai sekarang
+                </button>
+            </div>
+        </div>
+        
+        <!-- Halaman Kuis -->
+        <div id="quiz" class="page">
+            <div class="quiz-header" data-aos="fade-down">
+                <h2>Kuis Identifikasi Bentuk Tubuh</h2>
+                <div class="quiz-progress">
+                    <div class="progress-info">
+                        <span>Pertanyaan <span id="currentQuestion">1</span> dari <span id="totalQuestions">4</span></span>
+                        <span id="progressPercent">25%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="quizProgress"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="questionContainer" data-aos="fade-up">
+                <!-- Pertanyaan akan dimuat di sini secara dinamis -->
+            </div>
+            
+            <div class="navigation" data-aos="fade-up">
+                <button id="prevBtn" class="btn secondary">
+                    ← Sebelumnya
+                </button>
+                <button id="nextBtn" class="btn primary">
+                    Selanjutnya →
+                </button>
+            </div>
+        </div>
+        
+        <!-- Halaman Hasil -->
+        <div id="result" class="page">
+            <div class="result-container">
+                <div id="resultContent" data-aos="zoom-in">
+                    <!-- Hasil akan dimuat di sini -->
+                </div>
+                <div class="result-actions" data-aos="fade-up" data-aos-delay="300">
+                    <button id="recommendationBtn" class="btn primary large">
+                        👗 Lihat Rekomendasi Outfit
+                    </button>
+                    <button id="restartBtn" class="btn secondary">
+                        🔄 Ulangi Kuis
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Halaman Rekomendasi -->
+        <div id="recommendation" class="page">
+            <div id="recommendationContent" data-aos="fade-up">
+                <!-- Rekomendasi akan dimuat di sini -->
+            </div>
+            
+            <div class="navigation" data-aos="fade-up">
+                <button id="backToResult" class="btn secondary">
+                    ← Kembali ke Hasil
+                </button>
+                <button id="newQuiz" class="btn primary">
+                    Beranda
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

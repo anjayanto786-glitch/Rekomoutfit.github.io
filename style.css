@@ -1,0 +1,548 @@
+/* style.css - Fashion Editorial Theme (Responsive Mobile) */
+
+/* 1. Reset & Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Fonts */
+    --font-heading: 'Playfair Display', serif; /* Font Elegan untuk Judul */
+    --font-body: 'Poppins', sans-serif;       /* Font Bersih untuk Isi */
+
+    /* Palette Warna: Rose & Slate */
+    --primary: #be185d;       
+    --primary-light: #fce7f3; 
+    --primary-gradient: linear-gradient(135deg, #be185d 0%, #db2777 100%);
+    
+    --secondary: #1e293b;     
+    --accent: #fbbf24;        
+    
+    --bg-body: #f8fafc;       
+    --surface: #ffffff;       
+    --white: #ffffff;
+    
+    --text-main: #334155;
+    --text-muted: #64748b;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 30px -5px rgba(190, 24, 93, 0.15);
+    --shadow-hover: 0 20px 40px -5px rgba(190, 24, 93, 0.25);
+    
+    --radius: 20px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background-color: var(--bg-body);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(219, 39, 119, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    min-height: 100vh;
+    font-size: 16px; /* Base font size */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+/* 2. Header Style */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 50px 20px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 6px;
+    background: var(--primary-gradient);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading); /* Menggunakan Font Elegan */
+}
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 2.8em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.1em;
+}
+
+/* 3. Page Layout */
+.page {
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    animation: fadeUp 0.5s ease-out;
+}
+
+.page.active { display: block; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 4. Dashboard & Features */
+.hero-section { text-align: center; }
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.features {
+    display: grid;
+    /* Responsive: Otomatis 1 kolom di HP, 3 kolom di Desktop */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.feature-card {
+    padding: 30px 20px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    transition: var(--transition);
+    border: 1px solid #f1f5f9;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(190, 24, 93, 0.2);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    background: var(--primary-light);
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 5. Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    transition: var(--transition);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.btn.large { padding: 16px 40px; font-size: 1.1rem; }
+
+.btn.primary {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 8px 20px -5px rgba(190, 24, 93, 0.4);
+}
+
+.btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px -5px rgba(190, 24, 93, 0.5);
+}
+
+.btn.secondary {
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary-light);
+}
+
+.btn.secondary:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+/* 6. Body Shapes Overview */
+/* Grid yang fleksibel untuk HP dan PC */
+.shapes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.shape-card {
+    background: var(--surface);
+    padding: 20px 10px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid transparent;
+    width: 100%; /* Agar memenuhi grid */
+}
+
+.shape-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.shape-image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-light);
+    overflow: hidden;
+}
+
+.shape-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.shape-card h4 { font-size: 1rem; margin-bottom: 5px; color: var(--text-main); }
+.shape-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+
+/* 7. Quiz Layout */
+.quiz-header {
+    background: var(--primary-light);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    background: var(--primary-gradient);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.question h3 {
+    font-size: 1.5rem;
+    color: var(--secondary);
+    margin-bottom: 25px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.option {
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.option:hover { border-color: var(--primary); color: var(--primary); }
+.option.selected {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    gap: 15px;
+}
+
+/* 8. Result Page */
+.result-card {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+    border-radius: var(--radius);
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-hover);
+}
+
+.result-shape {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 10px;
+    font-family: var(--font-body);
+}
+
+.body-shape-result {
+    font-size: 3.5rem; /* Besar dan elegan */
+    margin: 15px 0;
+    background: linear-gradient(to right, #fce7f3, #fbcfe8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic; /* Menambah kesan fashion */
+}
+
+.result-description {
+    color: #cbd5e1;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* 9. Recommendations */
+.recommendation-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.recommendation-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 25px;
+    box-shadow: var(--shadow-sm);
+    border-top: 5px solid transparent;
+}
+
+.recommendation-card.positive { border-color: #10b981; }
+.recommendation-card.negative { border-color: #ef4444; }
+
+.recommendation-item {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+    margin-bottom: 8px;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.recommendation-card.positive .recommendation-item:hover { border-left-color: #10b981; background: #fff; }
+.recommendation-card.negative .recommendation-item:hover { border-left-color: #ef4444; background: #fff; }
+
+.item-text { font-weight: 600; color: var(--text-main); }
+.click-hint { font-size: 0.7rem; color: var(--primary); font-weight: 600; text-transform: uppercase; }
+
+/* 10. MODAL & IMAGE GRID (RESPONSIVE FIXED) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(5px);
+    overflow-y: auto;
+}
+
+.modal-content.large-modal {
+    background-color: var(--white);
+    margin: 30px auto;
+    padding: 0;
+    border-radius: 16px;
+    width: 92%; /* Lebih lebar di HP */
+    max-width: 1000px;
+    position: relative;
+    box-shadow: var(--shadow-hover);
+    animation: zoomIn 0.3s ease-out;
+}
+
+.modal-header {
+    padding: 20px 20px 10px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.close-modal {
+    position: absolute;
+    right: 15px; top: 15px;
+    font-size: 2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+}
+
+/* GRID FOTO - ORIGINAL LOGIC TAPI RESPONSIVE */
+.image-grid {
+    display: grid;
+    /* Default (Desktop): 4 Kolom */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 25px;
+}
+
+.image-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    aspect-ratio: 3/4; /* Tetap pertahankan proporsi portrait */
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+.image-item:hover .image-overlay { opacity: 1; }
+
+.zoom-icon { font-size: 2em; color: white; }
+
+/* Modal Gambar Full Size */
+.modal.image-modal .modal-content {
+    background: transparent;
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+.full-size-image {
+    max-height: 90vh;
+    max-width: 95vw;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* =========================================
+   MEDIA QUERIES (KHUSUS SMARTPHONE)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Layout Dasar */
+    .container { padding: 15px; }
+    .page { padding: 25px 15px; margin-bottom: 80px; /* Spacer untuk scroll */ }
+    
+    /* Header & Teks */
+    header { padding: 30px 15px; margin-bottom: 25px; }
+    h1 { font-size: 2rem; }
+    .subtitle { font-size: 0.95rem; margin-bottom: 30px; }
+    
+    /* Grid Feature & Shapes */
+    .features { grid-template-columns: 1fr; gap: 20px; }
+    .shapes-grid { grid-template-columns: repeat(2, 1fr); /* 2 kolom di HP agar tidak terlalu panjang ke bawah */ }
+    
+    /* Quiz */
+    .question h3 { font-size: 1.2rem; }
+    .options { grid-template-columns: 1fr; } /* Pilihan jawaban menumpuk ke bawah */
+    
+    /* Tombol Navigasi */
+    .navigation { 
+        flex-direction: column-reverse; /* Tombol 'Next' di atas, 'Prev' di bawah */
+        gap: 10px; 
+    }
+    .btn { width: 100%; }
+    
+    /* Hasil */
+    .body-shape-result { font-size: 2.5rem; }
+    .result-actions { flex-direction: column; }
+    
+    /* Rekomendasi */
+    .recommendation-cards { grid-template-columns: 1fr; }
+    
+    /* GRID FOTO DI HP (Sesuai request agar tidak aneh) */
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Kolom di HP */
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .modal-content.large-modal {
+        margin: 15% auto; /* Turunkan sedikit */
+        width: 95%;
+    }
+    
+    .modal-header h3 { font-size: 1.2rem; }
+}
